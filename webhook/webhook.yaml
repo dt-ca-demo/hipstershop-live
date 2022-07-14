@@ -1,0 +1,28 @@
+apiVersion: webhookconfig.keptn.sh/v1alpha1
+kind: WebhookConfig
+metadata:
+  name: webhook-configuration
+spec:
+  webhooks:
+    - type: sh.keptn.event.evaluation.triggered
+      requests:
+        - "curl --header 'Authorization:
+          {{.secret.dynatrace-metric-ingest.api_token}}' --header 'Content-Type:
+          application/json' --request POST --data '{    \"type\":
+          \"test\",    \"series\": [        {            \"timeseriesId\":
+          \"custom:releasevalidationscore\",            \"dimensions\":
+          {                \"Service\":
+          \"{{.data.service}}\",                \"Stage\":
+          \"{{.data.service}}\",                \"Project\":
+          \"{{.data.project}}\",                \"Version\":
+          \"{{.data.labels.version}}\",                \"BuildId\":
+          \"{{.data.labels.buildId}}\",                \"Result\":
+          \"{{.data.evaluation.result}}\",                \"Score\":
+          {{.data.evaluation.score}},                \"EvaluationTime\":
+          \"{{.time}}\"            },            \"dataPoints\":
+          [                [ {{.data.labels.evaltime}},
+          {{.data.evaluation.score}} ]            ]        }    ]}'
+          https://guu84124.live.dynatrace.com/api/v1/entity/infrastructure/cust\
+          om/custom:releasevalidationscore"
+      subscriptionID: 81e3f693-8d90-4814-9fb7-d0fb6e479037
+      sendFinished: false
