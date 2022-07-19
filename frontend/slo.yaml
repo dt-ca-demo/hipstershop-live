@@ -17,7 +17,7 @@ objectives:
     warning:
       - criteria:
           - "<=1500"
-    weight: 1
+    weight: 3
   - sli: error_rate
     displayName: "Error rate" 
     key_sli: false
