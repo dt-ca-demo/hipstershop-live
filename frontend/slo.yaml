@@ -24,6 +24,7 @@ objectives:
     pass:
       - criteria:
           - "<=5"
+    weight: 3
   - sli: throughput
     displayName: "Throughput" 
 total_score:
