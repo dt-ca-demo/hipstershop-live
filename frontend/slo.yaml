@@ -17,7 +17,7 @@ objectives:
     warning:
       - criteria:
           - "<1000"
-    weight: 2
+    weight: 3
   - sli: error_count
     displayName: "Error count" 
     key_sli: false
