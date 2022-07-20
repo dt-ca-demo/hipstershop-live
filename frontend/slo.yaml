@@ -12,12 +12,12 @@ objectives:
     key_sli: false
     pass:
       - criteria:
-          - "<1300"
-          - "<=+15%"
+          - "<=300"
+          - "<=+50%"
     warning:
       - criteria:
-          - "<=1500"
-    weight: 1
+          - "<=1000"
+    weight: 2
   - sli: error_rate
     displayName: "Error rate" 
     key_sli: false
@@ -26,7 +26,15 @@ objectives:
           - "<=5"
     weight: 1
   - sli: throughput
-    displayName: "Throughput" 
+    displayName: "Throughput"
+    key_sli: false
+    pass:
+      - criteria:
+          - ">=200"
+    warning:
+      - criteria:
+          - ">=150"
+    weight: 1
 total_score:
   pass: "90%"
   warning: "75%"
